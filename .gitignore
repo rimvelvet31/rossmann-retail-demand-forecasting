@@ -219,5 +219,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Data (never commit; see README for download steps)
-data/
+# Data: keep the folder structure, ignore the files (see README for download steps)
+data/**
+!data/**/
+!data/**/.gitkeep
