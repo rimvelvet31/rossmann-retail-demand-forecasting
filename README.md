@@ -28,6 +28,27 @@ The model is served as a FastAPI web service in Docker, deployed on Google Cloud
 - **Target:** `Sales` (euros per store per day).
 - **Not used:** Kaggle's `test.csv` has no `Sales` column, so the final holdout is taken from the end of `train.csv` instead.
 
+### Data dictionary
+
+| File | Column | Meaning |
+|---|---|---|
+| train | `Store` | Store ID, 1 to 1,115 |
+| train | `Date` | Calendar day |
+| train | `DayOfWeek` | 1 = Monday to 7 = Sunday |
+| train | `Sales` | Turnover in euros that day (**target**) |
+| train | `Customers` | Number of customers that day |
+| train | `Open` | 0 = closed, 1 = open |
+| train | `Promo` | Whether the store ran a promotion that day |
+| train | `StateHoliday` | Public holiday type: `0` none, `a` public, `b` Easter, `c` Christmas |
+| train | `SchoolHoliday` | Whether the store was affected by school closures |
+| store | `StoreType` | Store model, `a` to `d` |
+| store | `Assortment` | Product range level: `a` basic, `b` extra, `c` extended |
+| store | `CompetitionDistance` | Distance in metres to the nearest competitor |
+| store | `CompetitionOpenSinceMonth`, `CompetitionOpenSinceYear` | When the nearest competitor opened |
+| store | `Promo2` | Whether the store takes part in a continuing promotion (0 or 1) |
+| store | `Promo2SinceWeek`, `Promo2SinceYear` | When the store joined that promotion |
+| store | `PromoInterval` | Months when a Promo2 round restarts, e.g. `Feb,May,Aug,Nov` |
+
 ### Download
 
 Run this to fetch the data into `data/raw/` (works on Windows, macOS and Linux, no Kaggle account needed):
