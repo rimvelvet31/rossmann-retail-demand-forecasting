@@ -10,7 +10,9 @@ import re
 
 import pandas as pd
 
+from .checks import run_checks
 from .config import ASSORTMENT_LABELS, HOLIDAY_LABELS, MIN_PLAUSIBLE_YEAR, PROMO_INTERVAL_FIXES
+
 
 logger = logging.getLogger(__name__)
 
@@ -130,19 +132,6 @@ def merge_checked(left, right, on):
 
 
 # ---------- Checks ----------
-
-def run_checks(checks):
-    """Log PASS or FAIL for each (name, passed) pair, and raise if any check failed."""
-    for name, passed in checks:
-        if passed:
-            logger.info(f"PASS  {name}")
-        else:
-            logger.error(f"FAIL  {name}")
-    failed = [name for name, passed in checks if not passed]
-    if failed:
-        raise AssertionError(f"{len(failed)} check(s) failed: {failed}")
-
-
 def train_checks(df, raw, holiday_labels):
     """Checks for the cleaned train table. `raw` is the untouched train table."""
     dropped = ((raw["Open"] == 1) & (raw["Sales"] == 0)).sum()
@@ -221,8 +210,9 @@ def clean(train_raw, store_raw):
     """Clean both raw tables, check them, and merge them into fct_store_day. Raises if any check fails."""
     train = clean_train(train_raw)
     store = clean_store(store_raw)
-    run_checks(train_checks(train, train_raw, HOLIDAY_LABELS) + store_checks(store, store_raw))
+    run_checks(train_checks(train, train_raw, HOLIDAY_LABELS), "train")
+    run_checks(store_checks(store, store_raw), "store")
     merged = merge_checked(train, store, on="store_id")
-    run_checks(merged_checks(merged, train, store, on="store_id"))
+    run_checks(merged_checks(merged, train, store, on="store_id"), "merged")
     logger.info(f"fct_store_day: {merged.shape[0]:,} rows x {merged.shape[1]} columns")
     return merged
