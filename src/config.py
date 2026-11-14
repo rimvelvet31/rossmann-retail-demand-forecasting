@@ -19,6 +19,7 @@ ROLLING_MIN_DAYS = 7      # open days a rolling mean needs
 HOLIDAY_CAP = 14          # days to or since a holiday are capped here
 NATIONAL_SHARE = 0.9      # a holiday is national when this share of stores has it flagged
 COMPETITION_CAP = 24      # months since a competitor opened are capped here
+HISTORY_DAYS = ROLLING_WINDOW + HORIZON  # days of sales the API keeps per store (enough for every lag and the rolling mean)
 CATEGORY_COLUMNS = ["store_type", "assortment", "state_holiday"]  # text columns we one-hot encode
 
 # Cleaning rules (the same as the notebook's cleaning log)

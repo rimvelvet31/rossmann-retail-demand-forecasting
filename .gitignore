@@ -223,3 +223,6 @@ __marimo__/
 data/**
 !data/**/
 !data/**/.gitkeep
+
+# Model bundle: built by train.py, holds a slice of the Kaggle sales data, so it is not committed
+models/
