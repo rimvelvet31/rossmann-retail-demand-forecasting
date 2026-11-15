@@ -1,0 +1,12 @@
+{
+  "store_id": 1,
+  "days": [
+    {"date": "2015-08-01", "open": 1, "promo": 0, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-02", "open": 0, "promo": 0, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-03", "open": 1, "promo": 1, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-04", "open": 1, "promo": 1, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-05", "open": 1, "promo": 1, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-06", "open": 1, "promo": 1, "state_holiday": "none", "school_holiday": 1},
+    {"date": "2015-08-07", "open": 1, "promo": 1, "state_holiday": "none", "school_holiday": 1}
+  ]
+}
