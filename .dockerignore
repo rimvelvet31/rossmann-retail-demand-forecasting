@@ -1,0 +1,7 @@
+# Keep the build context small: the image only needs what the Dockerfile copies
+.venv
+.git
+data
+notebooks
+**/__pycache__
+.ipynb_checkpoints
